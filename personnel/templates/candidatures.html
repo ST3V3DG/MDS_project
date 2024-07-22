@@ -1,0 +1,92 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/fonts/ionicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/Animated-Toggle-NavBar-BS5-V2-1.css' %}">
+    <title>MDS</title>
+    <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,900&amp;display=swap">
+    <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="assets/css/Animated-Toggle-NavBar-BS5-V2-1.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.2/css/theme.bootstrap_4.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+    <link rel="stylesheet" href="assets/css/Login-Form-Basic-icons.css">
+    <link rel="stylesheet" href="assets/css/Ludens---1-Index-Table-with-Search--Sort-Filters-v20.css">
+    <link rel="stylesheet" href="assets/css/Ludens-Users---3-Profile.css">
+    <link rel="stylesheet" href="assets/css/Profile-with-data-and-skills.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/Table-with-search-table.css">
+    <link rel="stylesheet" href="assets/css/Table-with-search.css">
+</head>
+
+<body>
+    <nav class="navbar navbar-dark fixed-top bg-dark" style="background: rgb(255,255,255) !important;box-shadow: 0px 3px 5px;">
+        <div class="container"><img src="{% static 'assets/img/Logo-MDS.jpg' %}" width="175" height="55" style="width: 15vw;height: auto;">
+            <ul class="pages">
+                <li class="nav-item active"><a class="nav-link" href="candidatures.html">Candidatures</a></li>
+                <li class="nav-item"><a class="nav-link" href="projets.html">Projets</a></li>
+                <li class="nav-item"><a class="nav-link" href="comptes.html">Comptes</a></li>
+                <li class="fw-lighter nav-item" style="all: unset;" title="Mon profil"><a href="profil.html" style="color: var(--bs-black);"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="1em" height="1em" fill="currentColor" style="font-size: 32px;">
+                            <!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. -->
+                            <path d="M256 112c-48.6 0-88 39.4-88 88C168 248.6 207.4 288 256 288s88-39.4 88-88C344 151.4 304.6 112 256 112zM256 240c-22.06 0-40-17.95-40-40C216 177.9 233.9 160 256 160s40 17.94 40 40C296 222.1 278.1 240 256 240zM256 0C114.6 0 0 114.6 0 256s114.6 256 256 256s256-114.6 256-256S397.4 0 256 0zM256 464c-46.73 0-89.76-15.68-124.5-41.79C148.8 389 182.4 368 220.2 368h71.69c37.75 0 71.31 21.01 88.68 54.21C345.8 448.3 302.7 464 256 464zM416.2 388.5C389.2 346.3 343.2 320 291.8 320H220.2c-51.36 0-97.35 26.25-124.4 68.48C65.96 352.5 48 306.3 48 256c0-114.7 93.31-208 208-208s208 93.31 208 208C464 306.3 446 352.5 416.2 388.5z"></path>
+                        </svg></a></li>
+            </ul><button data-bs-toggle="collapse" class="navbar-toggler collapsed" data-bs-target="#navcol-2"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse text-center" id="navcol-2">
+                <ul class="navbar-nav" style="width: 95vw;">
+                    <li class="nav-item"><a class="nav-link active" href="candidatures.html">Candidatures</a></li>
+                    <li class="nav-item"><a class="nav-link" href="projets.html">Projets</a></li>
+                    <li class="nav-item"><a class="nav-link" href="comptes.html">Comptes</a></li>
+                    <li class="nav-item"><a class="nav-link" href="profil.html">Mon profil</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div class="my-4 pt-lg-4">
+        <h1 class="text-center d-lg-flex justify-content-lg-center align-items-lg-center heading">LISTE DES CANDIDATURES</h1>
+    </div>
+    <div style="display: flex;flex-direction: column;">
+        <div class="mb-3 me-5" style="display: flex;justify-content: end;align-items: center;"><input type="search" style="width: 95vw;max-width: 280px;height: 42px;/*border-style: none;*/border-top-left-radius: 5px;border-bottom-left-radius: 5px;border: 1px solid rgba(0,0,0,0.2);padding: 0 10px;"><i class="icon ion-android-search" style="font-size: 20px;padding: 5px 10px;border-top-right-radius: 5px;border-bottom-right-radius: 5px;border: 1px solid rgba(0,0,0,0.2);color: rgba(0,0,0,0.5);border-left: 0px;"></i></div>
+        <div class="table-responsive">
+            <table class="table">
+                <thead>
+                    <tr>
+                        <th>Noms et prénoms</th>
+                        <th>Téléphones</th>
+                        <th style="text-align: center;">Emails</th>
+                        <th style="text-align: center;">Détails</th>
+                    </tr>
+                </thead>
+                <tbody>
+                    <tr>
+                        <td class="name">Deffo Armand Ulrich</td>
+                        <td style="padding-top: .9em;">6 74 34 89 98</td>
+                        <td style="text-align: center;padding-top: .9rem;">email@email.com</td>
+                        <td class="i-consult" style="text-align: center;padding-top: .9rem;"><a href="/administrateur/candidature"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -32 576 576" width="1em" height="1em" fill="currentColor" class="i-consult" style="font-size: 32px;color: var(--bs-primary);">
+                                    <!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. -->
+                                    <path d="M208 256c35.35 0 64-28.65 64-64c0-35.35-28.65-64-64-64s-64 28.65-64 64C144 227.3 172.7 256 208 256zM464 232h-96c-13.25 0-24 10.75-24 24s10.75 24 24 24h96c13.25 0 24-10.75 24-24S477.3 232 464 232zM240 288h-64C131.8 288 96 323.8 96 368C96 376.8 103.2 384 112 384h192c8.836 0 16-7.164 16-16C320 323.8 284.2 288 240 288zM464 152h-96c-13.25 0-24 10.75-24 24s10.75 24 24 24h96c13.25 0 24-10.75 24-24S477.3 152 464 152zM512 32H64C28.65 32 0 60.65 0 96v320c0 35.35 28.65 64 64 64h448c35.35 0 64-28.65 64-64V96C576 60.65 547.3 32 512 32zM528 416c0 8.822-7.178 16-16 16H64c-8.822 0-16-7.178-16-16V96c0-8.822 7.178-16 16-16h448c8.822 0 16 7.178 16 16V416z"></path>
+                                </svg></a></td>
+                    </tr>
+                </tbody>
+            </table>
+        </div>
+    </div>
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+    <!-- <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.2/js/jquery.tablesorter.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.2/js/widgets/widget-filter.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.2/js/widgets/widget-storage.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="assets/js/Ludens---1-Index-Table-with-Search--Sort-Filters-v20-Ludens---1-Index-Table-with-Search--Sort-Filters.js"></script>
+    <script src="assets/js/Ludens---1-Index-Table-with-Search--Sort-Filters-v20-Ludens---Material-UI-Actions.js"></script>
+    <script src="assets/js/script.js"></script>
+    <script src="assets/js/Table-with-search-table.js"></script> -->
+</body>
+
+</html>

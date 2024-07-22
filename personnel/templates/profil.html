@@ -1,0 +1,78 @@
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, shrink-to-fit=no">
+    <link rel="stylesheet" href="{% static 'bootstrap/css/bootstrap.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}">
+    <link rel="stylesheet" href="{% static 'assets/fonts/ionicons.min.css' %}">
+    <link rel="stylesheet" href="{% static 'css/Animated-Toggle-NavBar-BS5-V2-1.css' %}">
+    <title>MDS</title>
+    <!-- <link rel="stylesheet" href="assets/bootstrap/css/bootstrap.min.css">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Poppins&amp;display=swap">
+    <link rel="stylesheet" href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,900&amp;display=swap">
+    <link rel="stylesheet" href="assets/fonts/ionicons.min.css">
+    <link rel="stylesheet" href="assets/css/Animated-Toggle-NavBar-BS5-V2-1.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.2/css/theme.bootstrap_4.min.css">
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css">
+    <link rel="stylesheet" href="assets/css/Login-Form-Basic-icons.css">
+    <link rel="stylesheet" href="assets/css/Ludens---1-Index-Table-with-Search--Sort-Filters-v20.css">
+    <link rel="stylesheet" href="assets/css/Ludens-Users---3-Profile.css">
+    <link rel="stylesheet" href="assets/css/Profile-with-data-and-skills.css">
+    <link rel="stylesheet" href="assets/css/styles.css">
+    <link rel="stylesheet" href="assets/css/Table-with-search-table.css">
+    <link rel="stylesheet" href="assets/css/Table-with-search.css"> -->
+</head>
+
+<body>
+    <nav class="navbar navbar-dark fixed-top bg-dark" style="background: rgb(255,255,255) !important;box-shadow: 0px 3px 5px;">
+        <div class="container"><img src="{% static 'assets/img/Logo-MDS.jpg' %}" width="175" height="55" style="width: 15vw;height: auto;">
+            <ul class="pages">
+                <li class="nav-item"><a class="nav-link" href="candidatures.html">Candidatures</a></li>
+                <li class="nav-item"><a class="nav-link" href="projets.html">Projets</a></li>
+                <li class="nav-item"><a class="nav-link" href="comptes.html">Comptes</a></li>
+                <li class="fw-lighter nav-item" style="all: unset;" title="Mon profil"><a href="profil.html" style="color: var(--bs-black);"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 512 512" width="1em" height="1em" fill="currentColor" style="font-size: 32px;">
+                            <!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. -->
+                            <path d="M256 112c-48.6 0-88 39.4-88 88C168 248.6 207.4 288 256 288s88-39.4 88-88C344 151.4 304.6 112 256 112zM256 240c-22.06 0-40-17.95-40-40C216 177.9 233.9 160 256 160s40 17.94 40 40C296 222.1 278.1 240 256 240zM256 0C114.6 0 0 114.6 0 256s114.6 256 256 256s256-114.6 256-256S397.4 0 256 0zM256 464c-46.73 0-89.76-15.68-124.5-41.79C148.8 389 182.4 368 220.2 368h71.69c37.75 0 71.31 21.01 88.68 54.21C345.8 448.3 302.7 464 256 464zM416.2 388.5C389.2 346.3 343.2 320 291.8 320H220.2c-51.36 0-97.35 26.25-124.4 68.48C65.96 352.5 48 306.3 48 256c0-114.7 93.31-208 208-208s208 93.31 208 208C464 306.3 446 352.5 416.2 388.5z"></path>
+                        </svg></a></li>
+            </ul><button data-bs-toggle="collapse" class="navbar-toggler collapsed" data-bs-target="#navcol-2"><span class="visually-hidden">Toggle navigation</span><span class="navbar-toggler-icon"></span></button>
+            <div class="collapse navbar-collapse text-center" id="navcol-2">
+                <ul class="navbar-nav" style="width: 95vw;">
+                    <li class="nav-item"><a class="nav-link" href="candidatures.html">Candidatures</a></li>
+                    <li class="nav-item"><a class="nav-link" href="projets.html">Projets</a></li>
+                    <li class="nav-item"><a class="nav-link" href="comptes.html">Comptes</a></li>
+                    <li class="nav-item"><a class="nav-link active" href="profil.html">Mon profil</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+    <div style="width: 50%;min-width: 250px;display: flex;flex-direction: column;gap: 20px;box-shadow: 5px 5px 10px 1px;padding: 35px;position: absolute;transform: translate(-50%,-50%);top: 50%;left: 50%;border-radius: 5px;">
+        <div>
+            <p style="opacity: 0.75;">Nom d'utilisateur :</p>
+            <p style="margin-top: -13px;font-weight: bold;font-size: 20px;margin-bottom: 16px;">userName</p>
+            <p style="opacity: 0.75;">Mot de passe :</p>
+            <p style="margin-top: -13px;font-weight: bold;font-size: 20px;margin-bottom: 16px;">userPassword</p>
+            <p style="opacity: 0.75;">Date de création :</p>
+            <p style="margin-top: -13px;font-weight: bold;font-size: 20px;margin-bottom: 0;">dateOfCreation</p>
+        </div>
+        <div class="profil-btn"><a id="deconnecter" href="connexion.html" style="text-decoration: none;color: red;position: relative;word-break: break-all;overflow: hidden;height: 25px;transition: .3s;"><svg xmlns="http://www.w3.org/2000/svg" viewBox="0 -64 640 640" width="1em" height="1em" fill="currentColor" style="font-size: 18px;">
+                    <!--! Font Awesome Free 6.1.1 by @fontawesome - https://fontawesome.com License - https://fontawesome.com/license/free (Icons: CC BY 4.0, Fonts: SIL OFL 1.1, Code: MIT License) Copyright 2022 Fonticons, Inc. -->
+                    <path d="M274.7 304H173.3C77.61 304 0 381.6 0 477.3C0 496.5 15.52 512 34.66 512h378.7C432.5 512 448 496.5 448 477.3C448 381.6 370.4 304 274.7 304zM224 256c70.7 0 128-57.31 128-128S294.7 0 224 0C153.3 0 96 57.31 96 128S153.3 256 224 256zM577.9 223.1l47.03-47.03c9.375-9.375 9.375-24.56 0-33.94s-24.56-9.375-33.94 0L544 190.1l-47.03-47.03c-9.375-9.375-24.56-9.375-33.94 0s-9.375 24.56 0 33.94l47.03 47.03l-47.03 47.03c-9.375 9.375-9.375 24.56 0 33.94c9.373 9.373 24.56 9.381 33.94 0L544 257.9l47.03 47.03c9.373 9.373 24.56 9.381 33.94 0c9.375-9.375 9.375-24.56 0-33.94L577.9 223.1z"></path>
+                </svg>&nbsp;Se déconnecter</a><a id="editer" href="#" style="text-decoration: none;background: #0d6efd;color: white;padding: 8px;border-radius: 4px;transition: .2s;"><i class="icon ion-edit"></i>&nbsp;Editer le profil</a></div>
+    </div>
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+    <!-- <script src="assets/bootstrap/js/bootstrap.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.2/js/jquery.tablesorter.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.2/js/widgets/widget-filter.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.2/js/widgets/widget-storage.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="assets/js/Ludens---1-Index-Table-with-Search--Sort-Filters-v20-Ludens---1-Index-Table-with-Search--Sort-Filters.js"></script>
+    <script src="assets/js/Ludens---1-Index-Table-with-Search--Sort-Filters-v20-Ludens---Material-UI-Actions.js"></script>
+    <script src="assets/js/script.js"></script>
+    <script src="assets/js/Table-with-search-table.js"></script> -->
+</body>
+
+</html>
