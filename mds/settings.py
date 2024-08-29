@@ -51,6 +51,7 @@ ALLOWED_HOSTS = []
 
 INSTALLED_APPS = [
     'unfold',
+    'unfold.contrib.filters',
     'unfold.contrib.import_export',
     'personnel.apps.PersonnelConfig',
     'django.contrib.admin',

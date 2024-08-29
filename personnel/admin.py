@@ -2,6 +2,7 @@ from unfold.admin import ModelAdmin
 from django.contrib import admin
 from django.contrib.auth.models import User
 from django.contrib.admin import register
+from unfold.contrib.filters.admin import (RangeDateFilter, RangeDateTimeFilter)
 from personnel.models import Projet, Candidature, Affectation, Poste
 from django.utils.html import format_html
 from django.contrib.auth.admin import UserAdmin as BaseUserAdmin
@@ -36,7 +37,11 @@ class AdminProjet(ModelAdmin, ImportExportModelAdmin):
     export_form_class = ExportForm
     list_per_page = 10
     search_fields = ('nom',)
-    list_filter = ('date_debut','date_fin')
+    list_filter_submit = True
+    list_filter = [
+        ('date_debut', RangeDateFilter),
+        ('date_fin', RangeDateFilter)
+    ]
 # admin.site.register(Projet,AdminProjet)
 
 
@@ -46,7 +51,7 @@ class AdminCandidature(ModelAdmin, ImportExportModelAdmin):
     export_form_class = ExportForm
     list_display=('nom','prenom','email_link','telephone','localisation','statut')
     list_per_page = 10
-    list_filter = ('statut',)
+    list_filter = ['statut']
     search_fields = ('nom',)
     def email_link(self, obj):
         return format_html('<a href="mailto:{}">{}</a>', obj.email, obj.email)
