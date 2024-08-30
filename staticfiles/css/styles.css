@@ -6,8 +6,13 @@
   box-sizing: border-box !important;
   font-family: poppins, sans-serif;
 }
-.pst-input {
-  width: 110%;
+
+#candform {
+  width: 80vw;
+}
+
+#candform input {
+    width: 60vw;
 }
 
 @media (min-width:1200px) {
@@ -63,6 +68,14 @@
     flex: 0 0 auto;
     width: 45%;
   }
+
+  #candform {
+  width: 50vw;
+}
+
+#candform input {
+    width: 35vw;
+}
 }
 
 @media (min-width:768px) {
