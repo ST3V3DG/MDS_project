@@ -13,6 +13,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 from pathlib import Path
 import os
 from personnel.info import *
+import environ
 import django
 from django.utils.encoding import force_str
 django.utils.encoding.force_text=force_str
@@ -27,10 +28,8 @@ EMAIL_PORT = 587
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
 BASE_DIR = Path(__file__).resolve().parent.parent
-MEDIA_URL = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, 'media/')
-STATIC_URL = '/static/'
-STATIC_ROOT = os.path.join(BASE_DIR, 'static')
+vars = environ.Env()
+environ.Env.read_env(env_file=str(BASE_DIR / 'mds' / 'vars'))
 
 
 
@@ -39,12 +38,12 @@ STATIC_ROOT = os.path.join(BASE_DIR, 'static')
 # See https://docs.djangoproject.com/en/5.0/howto/deployment/checklist/
 
 # SECURITY WARNING: keep the secret key used in production secret!
-SECRET_KEY = 'django-insecure-dq(3p3obrc&m-mipe=9)3dzg6a-la1*+(1ye!_5^y@vx_%%19_'
+SECRET_KEY = vars('SECRET_KEY')
 
 # SECURITY WARNING: don't run with debug turned on in production!
-DEBUG = True
+DEBUG = vars.bool("DEBUG", False)
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = vars.list('ALLOWED_HOSTS')
 
 
 # Application definition
@@ -140,7 +139,10 @@ USE_TZ = True
 # Static files (CSS, JavaScript, Images)
 # https://docs.djangoproject.com/en/5.0/howto/static-files/
 
-STATIC_URL = 'static/'
+MEDIA_URL = '/media/'
+STATIC_URL = '/static/'
+MEDIA_ROOT = BASE_DIR / 'mediafiles'
+STATIC_ROOT = BASE_DIR / 'staticfiles'
 
 
 

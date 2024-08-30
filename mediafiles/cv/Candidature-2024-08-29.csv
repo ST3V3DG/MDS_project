@@ -1,0 +1,2 @@
+id,user,nom,prenom,email,cni,telephone,localisation,photo,cv,lettre_motivation,statut
+1,2,steve,diego,rosycrystal024@gmail.com,1234532411235123,766879887342531261,douala,photo/photo_nU7kOHj.png,cv/Fiche-Formation_Bootstrap_-_Matriser_le_populaire_framework_CSS_uqat5nh.pdf,lettre_motivation/Bootstrap-tutorial_98TRIwX.pdf,en attente

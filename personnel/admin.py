@@ -53,6 +53,11 @@ class AdminCandidature(ModelAdmin, ImportExportModelAdmin):
     list_per_page = 10
     list_filter = ['statut']
     search_fields = ('nom',)
+    fieldsets = [
+       ("Informations personnelles", {"fields": ["photo","nom","prenom","email","localisation"]}),
+       ("Médias", {"fields": ["cv","lettre_motivation"]}),
+       (None, {"fields": ["statut"]}),
+    ]
     def email_link(self, obj):
         return format_html('<a href="mailto:{}">{}</a>', obj.email, obj.email)
     email_link.short_description = 'Email'
