@@ -1,0 +1,8 @@
+ .h-8.hidden.mr-4 {
+    height: 4rem;
+ }
+
+  .h-8.block.mr-4 {
+    height: 4rem;
+    filter: brightness(1);
+ }

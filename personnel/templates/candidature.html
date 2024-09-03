@@ -32,11 +32,10 @@
   </style>
   <nav class="navbar fixed-top bg-dark navbar-dark"
     style="background: rgb(255,255,255) !important;box-shadow: 0px 3px 5px;">
-    <div class="container"><img src="{% static 'assets/img/Logo-MDS.jpg' %}" width="175" height="55"
-        style="width: 15vw;height: auto;">
+    <div class="container"><img src="{% static 'assets/img/logo-MDS.png' %}" style="width: 10vw;height: auto;filter: brightness(0);">
       <ul class="pages">
-        <li class="nav-item" style="color: #000000;"><a class="nav-link" target='_blank' href="https://mds-cmr.com/fr/contact/">Contact</a></li>
-                <li class="nav-item" style="color: #000000;"><a class="nav-link" target='_blank' href="https://mds-cmr.com/fr/a-propos/">A propos</a></li>
+        <!-- <li class="nav-item" style="color: #000000;"><a class="nav-link" target='_blank' href="https://mds-cmr.com/fr/contact/">Contact</a></li>
+                <li class="nav-item" style="color: #000000;"><a class="nav-link" target='_blank' href="https://mds-cmr.com/fr/a-propos/">A propos</a></li> -->
         <li class="fw-lighter nav-item" style="all: unset;"><a href="{%url 'logout'%}"
             style="color: var(--bs-black);"><button class="btn btn-danger">Se déconnecter</button></a></li>
       </ul><button data-bs-toggle="collapse" class="navbar-toggler collapsed" data-bs-target="#navcol-2"><span
@@ -51,7 +50,7 @@
     </div>
   </nav>
   <div class="container">
-    <div class="main-body mt-2 pt-5">
+    <div class="main-body mt-4 pt-5">
       <div class="row gutters-sm mt-lg-5">
         <div class="col-md-4 mb-3">
           <div class="card">

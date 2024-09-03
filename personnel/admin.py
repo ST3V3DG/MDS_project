@@ -40,7 +40,8 @@ class AdminProjet(ModelAdmin, ImportExportModelAdmin):
     list_filter_submit = True
     list_filter = [
         ('date_debut', RangeDateFilter),
-        ('date_fin', RangeDateFilter)
+        ('date_fin', RangeDateFilter),
+        "cloture",
     ]
 # admin.site.register(Projet,AdminProjet)
 
@@ -54,7 +55,7 @@ class AdminCandidature(ModelAdmin, ImportExportModelAdmin):
     list_filter = ['statut']
     search_fields = ('nom',)
     fieldsets = [
-       ("Informations personnelles", {"fields": ["photo","nom","prenom","email","localisation"]}),
+       ("Informations personnelles", {"fields": ["user","photo","nom","prenom","telephone","email","localisation"]}),
        ("Médias", {"fields": ["cv","lettre_motivation"]}),
        (None, {"fields": ["statut"]}),
     ]
@@ -74,6 +75,36 @@ class AdminAffectation(ModelAdmin, ImportExportModelAdmin):
     list_per_page = 10
     filter_horizontal = ("candidature",)
     list_filter = ("projet","poste")
+    def formfield_for_foreignkey(self, db_field, request, **kwargs):
+        if db_field.name == 'projet':
+            # Filtrer les projets pour ne montrer que ceux qui ne sont pas terminés
+            kwargs["queryset"] = Projet.objects.filter(cloture=False)
+        return super().formfield_for_foreignkey(db_field, request, **kwargs)
+    
+    def get_readonly_fields(self, request, obj=None):
+        if obj and obj.projet.Mcloture:
+            # Rendre tous les champs en lecture seule si le projet est terminé
+            return [field.name for field in self.model._meta.fields]
+        return super().get_readonly_fields(request, obj)
+
+    def has_change_permission(self, request, obj=None):
+        if obj and obj.projet.cloture:
+            # Empêcher les modifications si le projet est terminé
+            return False
+        return super().has_change_permission(request, obj)
+
+    def has_delete_permission(self, request, obj=None):
+        if obj and obj.projet.cloture:
+            # Autoriser la suppression si le projet est terminé
+            return True
+        return super().has_delete_permission(request, obj)
+    
+    def formfield_for_manytomany(self, db_field, request, **kwargs):
+        if db_field.name == 'candidature':
+            kwargs["queryset"] = Candidature.objects.validée() 
+        return super().formfield_for_manytomany(db_field, request, **kwargs)
+    
+
 # admin.site.register(Affectation,AdminAffectation)
     
 @register(Poste)

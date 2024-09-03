@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.0/ref/settings/
 """
 
 from pathlib import Path
+from django.templatetags.static import static
 import os
 from personnel.info import *
 import environ
@@ -156,6 +157,18 @@ DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 UNFOLD = {
     "SITE_TITLE":'MARKETING AND DISTRIBUTION SERVICES',
     "SITE_HEADER":'MDS',
+    "SITE_LOGO": {
+        "light": lambda request: static("assets/img/logo-MDS.jpg"),  # light mode
+        "dark": lambda request: static("assets/img/logo-MDS.png"),  # dark mode
+    },
+    "SITE_FAVICONS": [
+        {
+            "rel": "icon",
+            "sizes": "64x64",
+            "type": "image/svg+xml",
+            "href": lambda request: static("assets/img/logo-MDS.png"),
+        },
+    ],
     "COLORS": {
         "primary": {
             # 50 250 245 255,
@@ -169,5 +182,11 @@ UNFOLD = {
             # 900 88 28 135,
             # 950 59 7 100,
         },
+    },
+    "STYLES": [
+        lambda request: static("css/logo.css"),
+    ],
+    "SIDEBAR": {
+       "show_search": True,
     },
 }

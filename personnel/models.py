@@ -5,6 +5,7 @@ from django.db.models.signals import post_save
 from PIL import Image
 from io import BytesIO
 from django.core.files.uploadedfile import InMemoryUploadedFile
+from django.core.validators import MinValueValidator
 import sys
 import logging
 logger = logging.getLogger(__name__)
@@ -12,6 +13,10 @@ logger = logging.getLogger(__name__)
 
 
 # Create your models here. 
+class CandidatureManger(models.Manager):
+    def validée(self):
+        return self.filter(statut="validée")
+
 class Candidature(models.Model):
     user = models.OneToOneField(User, on_delete=models.CASCADE, null=True, related_name='candidature')
     nom = models.CharField(max_length=50,null=True)
@@ -23,21 +28,23 @@ class Candidature(models.Model):
     photo = models.ImageField(upload_to='photo')
     cv = models.FileField(upload_to='cv')
     lettre_motivation = models.FileField(upload_to='lettre_motivation')
-    OPTION_ONE = 'en attente'
-    OPTION_TWO = 'validée'
-    OPTION_THREE = 'refusée'
+    en_attente = 'en attente'
+    validée = 'validée'
+    refusée = 'refusée'
 
     CHOICES = [
-        (OPTION_ONE, 'En attente'),
-        (OPTION_TWO, 'Validée'),
-        (OPTION_THREE, 'Refusée'),
+        (en_attente, 'En attente'),
+        (validée, 'Validée'),
+        (refusée, 'Refusée'),
     ]
 
     statut = models.CharField(
         max_length=10,
         choices=CHOICES,
-        default=OPTION_ONE,
+        default=en_attente,
     )
+    
+    objects = CandidatureManger()
 
     class Meta:
         verbose_name = ("Candidature")
@@ -50,9 +57,11 @@ class Candidature(models.Model):
 class Projet(models.Model):
     nom = models.CharField(max_length=50)
     description = models.TextField()
+    remuneration = models.FloatField(verbose_name='Rémunération (en FCFA)',default=0,validators=[MinValueValidator(0)])
     objectif = models.CharField(max_length=50)
     date_debut = models.DateField(verbose_name="Date de début (jj/mm/aaaa)")
     date_fin = models.DateField(verbose_name="Date de fin (jj/mm/aaaa)")
+    cloture = models.BooleanField(verbose_name="Clôturer",default=False)
     
     class Meta:
         verbose_name = ("Projet")
