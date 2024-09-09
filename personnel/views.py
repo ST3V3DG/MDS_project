@@ -28,20 +28,20 @@ def register(request):
         password=request.POST['passwordUser']
         email=request.POST['emailUser']
         if User.objects.filter(username=username):
-            messages.error(request,'ce nom a deja ete utilise')
+            messages.error(request,'Ce nom a déjà été utilisé')
             return redirect('register')
         if User.objects.filter(email=email):
-            messages.error(request,'cet email a deja ete utilise')
+            messages.error(request,'Cet email a déjà été utilisé')
             return redirect('register')
         if not username.isalnum():
-            messages.error(request,"cet email a deja ete utilise")
+            messages.error(request,"Le nom d'utilisateur ne peut contenir d'espace")
             return redirect('register')
         prestataire=User.objects.create_user(username,email,password)
         prestataire.is_active = False
         prestataire.save()
-        messages.success(request,'votre compte a ete cree avec succes allez verifiez votre email')
+        messages.success(request,'Votre compte a été créé avec succes, veuillez vérifier votre boîte mail')
         current_site=get_current_site(request)
-        email_subject = "confirmation de l'adresse email sur le systeme MDS"
+        email_subject = "Confirmation de l'adresse mail sur le systeme d'enrolement de MDS"
         to_list=[prestataire.email]
         messageConfirm = render_to_string("emailconfirm.html",{
             "name":prestataire.username,
@@ -68,22 +68,22 @@ def login(request):
             if prestataire.is_active == True:
                 aut_login(request,prestataire)
                 if request.user.is_staff:
-                    messages.success(request,'vous etes connecte')
+                    messages.success(request,'Connexion réussie')
                     return redirect('/admin/')
                 else:
                     try:
                         user = User.objects.get(username=username)
                         profil = Candidature.objects.get(user=user)
                         if profil is not None:
-                            messages.success(request,"vous etes a present connecte a votre profil")
+                            messages.success(request,"Connexion réussie")
                             return redirect('candidature', profil.user.username)
                     except Candidature.DoesNotExist:
-                        messages.success(request,'a present remplissez vos differentes informations')
+                        messages.success(request,'Veuillez à présent remplir vos differentes informations')
                         return redirect('postuler')   
             else:
-                messages.error(request,"vous n'avez pas confirme votre adresse email allez verifiez dans votre boite mail ")
+                messages.error(request,"Vous n'avez pas confirmé votre adresse mail, veuillez vérifier dans votre boite mail")
         else:
-            messages.error(request,'verifiez vos identifiants')
+            messages.error(request,'Vérifiez vos identifiants')
     return render(request,'connexion.html')
 
 def custom_logout(request):
@@ -99,10 +99,10 @@ def activate(request,uidb64,token):
     if prestataire is not None and generatorToken.check_token(prestataire,token):
         prestataire.is_active = True
         prestataire.save()
-        messages.success(request,'votre compte a ete bien active a present vous pouvez vous connecte')
+        messages.success(request,'Votre compte a bien été activé, à présent vous pouvez vous connecter')
         return redirect('login')
     else:
-        messages.error(request,"veuillez activez votre compte")
+        messages.error(request,"Veuillez activer votre compte")
  
 @login_required
 def postuler(request):
@@ -120,11 +120,11 @@ def postuler(request):
          if photo:
             img = Image.open(photo)
             if img.width > 800 or img.height > 800:
-                messages.error(request, "L'image doit être de 800x800 pixels ou moins.")
+                messages.error(request, "L'image doit être de 800x800 pixels ou moins")
                 return render(request, "postuler.html")
          candidature = Candidature(user=user,nom=nom,prenom=prenom,email=email,telephone=telephone,cni=cni,localisation=localisation,cv=cv,lettre_motivation=lettre_motivation,photo=photo)
          candidature.save()
-         messages.success(request,'vos identifiants ont bien ete enregistres')
+         messages.success(request,'Vos identifiants ont bien été enregistrés')
          return redirect('candidature', user.username)
     return render(request, "postuler.html")
 
@@ -171,8 +171,8 @@ def update(request, username):
                 return render(request, "update.html" ,{"user":user,'profil':profil,'required':required})
         profil.save()
         try:
-            messages.success(request,'vos informations ont bien ete mis a jour')
+            messages.success(request,'Vos informations ont bien été mises à jour')
         except:
-            messages.error("vos informations n'ont pas ete modifiees")
+            messages.error("Vos informations n'ont pas été modifiées")
         return redirect('candidature',profil.user.username)
     return render(request,'update.html',{"user":user,'profil':profil,'required':required})
