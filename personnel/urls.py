@@ -13,6 +13,7 @@ urlpatterns = [
     path('activate/<uidb64>/<token>', views.activate,name='activate'),
     path("candidature/<str:username>/", views.candidature,name='candidature'),
     path("modifier/<str:username>/", views.update, name='update'),
+    path("projets/<str:username>/", views.projets, name='projets'),
     
 ]
 if settings.DEBUG:
