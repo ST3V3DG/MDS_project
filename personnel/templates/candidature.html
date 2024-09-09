@@ -131,28 +131,9 @@
                 </div>
               </div>
               <hr>
-              {% if exp%}
-              <details>
-                <summary>Liste des projets</summary>
-                <table class="table">
-                  <thead>
-                    <tr>
-                      <td>Noms des projets</td>
-                      <td>Durées des projets</td>
-                      <td>Postes occupés</td>
-                    </tr>
-                  </thead>
-                  <tbody>
-                    {% for affectation in affectations %}
-                      <tr>
-                        <td>{{ affectation.projet.nom }}</td>
-                        <td>{{ affectation.projet.date_debut }} - {{ affectation.projet.date_fin }}</td>
-                        <td>{{ affectation.poste.nom }}</td>
-                      </tr>
-                    {%endfor%}
-                  {%else%}
-
-                  {%endif%}
+              {% if exp %}
+                <a href="{% url 'projets' profil.user.username %}">Voir les projets effectués</a>
+              {% endif %}
                   </tbody>
                 </table>
               </details>
