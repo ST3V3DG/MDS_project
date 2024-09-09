@@ -1,0 +1,145 @@
+{% load static %}
+<!DOCTYPE html>
+<html data-bs-theme="light" lang="fr">
+  <head>
+    <meta charset="utf-8" />
+    <meta
+      name="viewport"
+      content="width=device-width, initial-scale=1.0, shrink-to-fit=no"
+    />
+    <title>MDS</title>
+    <link
+      rel="stylesheet"
+      href="{% static 'bootstrap/css/bootstrap.min.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Poppins&amp;display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="https://fonts.googleapis.com/css?family=Source+Sans+Pro:300,400,600,700,900&amp;display=swap"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'css/Animated-Toggle-NavBar-BS5-V2-1-1.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.2/css/theme.bootstrap_4.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.css"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'css/Profile-with-data-and-skills-1.css' %}"
+    />
+    <link
+      rel="stylesheet"
+      href="{% static 'css/Profile-with-data-and-skills.css' %}"
+    />
+    <link rel="stylesheet" href="{% static 'css/styles.css' %}" />
+  </head>
+  <body>
+    <nav
+      class="navbar fixed-top bg-dark navbar-dark"
+      style="background: rgb(255, 255, 255) !important; box-shadow: 0px 3px 5px"
+    >
+      <div class="container">
+        <img
+          src="{% static 'assets/img/Logo-MDS.jpg' %}"
+          width="175"
+          height="55"
+          style="width: 15vw; height: auto"
+        />
+        <ul class="pages">
+          <li class="nav-item" style="color: #000000">
+            <a
+              class="nav-link"
+              target="_blank"
+              href="https://mds-cmr.com/fr/contact/"
+              >Contact</a
+            >
+          </li>
+          <li class="nav-item" style="color: #000000">
+            <a
+              class="nav-link"
+              target="_blank"
+              href="https://mds-cmr.com/fr/a-propos/"
+              >A propos</a
+            >
+          </li>
+          <li class="fw-lighter nav-item" style="all: unset">
+            <a href="{% url 'logout' %}" style="color: var(--bs-black)"
+              ><button class="btn btn-danger">Se déconnecter</button></a
+            >
+          </li>
+        </ul>
+        <button
+          data-bs-toggle="collapse"
+          class="navbar-toggler collapsed"
+          data-bs-target="#navcol-2"
+        >
+          <span class="visually-hidden">Toggle navigation</span
+          ><span class="navbar-toggler-icon"></span>
+        </button>
+        <div class="collapse navbar-collapse text-center" id="navcol-2">
+          <ul class="navbar-nav w-100">
+            <li class="nav-item" style="color: #000000">
+              <a
+                class="nav-link"
+                target="_blank"
+                href="https://mds-cmr.com/fr/contact/"
+                >Contact</a
+              >
+            </li>
+            <li class="nav-item" style="color: #000000">
+              <a
+                class="nav-link"
+                target="_blank"
+                href="https://mds-cmr.com/fr/a-propos/"
+                >A propos</a
+              >
+            </li>
+            <li class="nav-item">
+              <a class="nav-link" href="{%url 'logout' %}">Se déconnecter</a>
+            </li>
+          </ul>
+        </div>
+      </div>
+    </nav>
+    <div class="text-center mt-5 py-5 bg-primary text-white">
+      <h1 class="pt-5 pb-4">Projets effectués</h1>
+    </div>
+    <div class="container mt-4">
+      <table class="table">
+        <thead>
+          <tr>
+            <td class="fw-bold">Noms des projets</td>
+            <td class="fw-bold">Durées des projets</td>
+            <td class="fw-bold">Postes occupés</td>
+          </tr>
+        </thead>
+        <tbody>
+          {% for affectation in affectations %}
+          <tr>
+            <td>{{ affectation.projet.nom }}</td>
+            <td>
+              {{ affectation.projet.date_debut }} - {{ affectation.projet.date_fin }}
+            </td>
+            <td>{{ affectation.poste.nom }}</td>
+          </tr>
+          {%endfor%}
+        </tbody>
+      </table>
+    </div>
+    <script src="{% static 'bootstrap/js/bootstrap.min.js' %}"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.2/js/jquery.tablesorter.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.2/js/widgets/widget-filter.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.tablesorter/2.31.2/js/widgets/widget-storage.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/jqueryui/1.12.1/jquery-ui.min.js"></script>
+    <script src="{% static 'js/script.js' %}"></script>
+  </body>
+</html>
