@@ -176,3 +176,9 @@ def update(request, username):
             messages.error("Vos informations n'ont pas été modifiées")
         return redirect('candidature',profil.user.username)
     return render(request,'update.html',{"user":user,'profil':profil,'required':required})
+
+def projets(request, username):
+    user = User.objects.get(username=username)
+    profil = Candidature.objects.get(user=user)
+    affectations = profil.affectation.all().order_by('-projet_id')
+    return render(request, 'projets.html',{"affectations":affectations})
