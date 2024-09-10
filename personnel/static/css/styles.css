@@ -8,11 +8,11 @@
 }
 
 #candform {
-  width: 80vw;
+  width: 85vw;
 }
 
 #candform input {
-  width: 60vw;
+  width: 70vw;
 }
 
 @media (min-width:1200px) {
@@ -70,7 +70,7 @@
   }
 
   #candform {
-    width: 50vw;
+    width: 45vw;
   }
 
   #candform input {
